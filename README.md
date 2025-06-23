@@ -138,7 +138,7 @@ Replace <BUCKET_NAME> with your S3 bucket name.
 ********
 Modify your CronJob to use the service account and mount the credentials.
 
-Step 6.1: Example CronJob YAML
+**Step 6.1: Example CronJob YAML**
 yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -165,13 +165,13 @@ Replace <NAMESPACE> with your namespace.
 Replace <YOUR_IMAGE> with the container image for your Python script.
 Replace <AWS_REGION> with the AWS region of your S3 bucket.
 
-7. Verify the Setup
+**7. Verify the Setup**
 Deploy the service account, CredentialsRequest, and CronJob.
 Check that the pod created by the CronJob can access the S3 bucket.
 
 You can verify this by adding logging to your Python script or using aws s3 commands in your container to list bucket contents.
 
-How it Works
+**How it Works**
 The service account (s3-access-sa) is linked to the IAM role via the OIDC provider.
 When the CronJob runs, the pod assumes the IAM role and uses temporary credentials to access the S3 bucket.
 The credentials are securely managed by OpenShift and AWS, so no long-lived secrets are exposed.
